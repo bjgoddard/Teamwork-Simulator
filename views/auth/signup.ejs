@@ -1,48 +1,29 @@
-<h2>hey</h2>
+<h2>Register</h2>
 <div class="row">
   <form method="POST" action="/auth/signup" class="col s12">
     <div class="row">
-      <div class="input-field col s6">
-        <input id="firstname" type="string" class="validate" value="<%= data.firstname %>" name="firstname">
-        <label for="firstname">First Name</label>
+      <div class="input-field col s12">
+        <input id="username" type="text" class="validate" value="<%= data.username %>" name="username">
+        <label for="username">User Name</label>
       </div>
-      <div class="input-field col s6">
-        <input id="lastname" type="string" class="validate" value="<%= data.lastname %>"name="lastname">
-        <label for="lastname">Last Name</label>
-      </div>
-  
     </div>
     <div class="row">
-      <div class="input-field col s6">
-        <input id="email" type="string" class="validate" value="<%= data.email %>"name="email">
+      <div class="input-field col s12">
+        <input id="email" type="text" class="validate" value="<%= data.email %>"name="email">
         <label for="email">Email</label>
       </div>
-      <div class="input-field col s6">
-        <input id="birthdate" type="date" class="datepicker validate"value="<%= data.birthdate %>" name="birthdate">
-        <label for="birthdate">Birth Date</label>
-      </div>
     </div>
     <div class="row">
-      <div class="input-field col s6">
-        <input id="photo_url" type="string" class="validate" value="<%= data.photo_url%>" name="photo_url">
-        <label for="photo_url">Profile Pic</label>
-      </div>
-      <div class="input-field col s6">
-        <input id="bio" type="string" class="validate" value="<%= data.bio %>"name="bio">
-        <label for="bio">Biography</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input id="password" type="password" class="validate" name="password">
         <label for="password">Password</label>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input id="password_verify" type="password" class="validate" name="password_verify">
         <label for="password_verify">Password Verify</label>
       </div>
     </div>
-    <button class="btn waves-effect waves-light teal lighten-3" type="submit">Sign Up
+    <button class="btn waves-effect waves-light teal lighten-3" type="submit">Register
       <i class="material-icons right"></i>
     </button>
   </form>
