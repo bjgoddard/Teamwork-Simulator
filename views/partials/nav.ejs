@@ -1,11 +1,11 @@
 <nav class="blue lighten-2">
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Bennie</a>
+          <a href="#" class="brand-logo">Teamwork Simulator</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/">Home</a></li>
             <% if (!user) { %> 
             <li><a href="/auth/login">Login</a></li>
-            <li><a href="/auth/signup">Signup</a></li>
+            <li><a href="/auth/signup">Register</a></li>
             <% } else { %>
             <li>Howdy, <%= user.firstname %>!</li>
               <% if (user.admin) { %>

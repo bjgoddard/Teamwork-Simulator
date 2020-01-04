@@ -1,5 +1,5 @@
 {
-  "name": "boiler-plate",
+  "name": "teamwork-simulator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -20,6 +20,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^7.14.0",
-    "sequelize": "^5.21.3"
+    "sequelize": "^5.21.3",
+    "socket.io": "^2.3.0"
   }
 }

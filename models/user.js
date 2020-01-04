@@ -4,27 +4,24 @@ let bcrypt= require('bcryptjs')
 
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
-    firstname: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: {
           args: [1, 30],
-          msg: 'Come on, we know you have a firstname.'
+          msg: 'Username is required.'
         }
       }
     },
-    lastname: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
       validate: {
         isEmail: {
-          msg: 'Hey please give a valid email address! Q(^.^Q)'
+          msg: 'Valid email address is required.'
         }
       }
     },
-    username: DataTypes.STRING,
-    birthdate: DataTypes.DATE,
     password: {
       type: DataTypes.STRING,
       validate: {
@@ -33,17 +30,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Your password must be between 6 and 25 characters'
         }
       }
-    },
-    photo_url: {
-      type: DataTypes.STRING,
-      validate: {
-        isUrl: {
-          msg: 'u ugly huh'
-        }
-      }
-    },
-    bio: DataTypes.TEXT,
-    admin: DataTypes.BOOLEAN
+    }
   }, {
     hooks: {
       beforeCreate: pendingUser => {
