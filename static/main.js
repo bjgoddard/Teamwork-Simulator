@@ -7,6 +7,8 @@
   var canvas = document.getElementsByClassName('whiteboard')[0];
   var colors = document.getElementsByClassName('color');
   var context = canvas.getContext('2d');
+  context.canvas.width = window.innerWidth;
+  context.canvas.height = window.innerHeight;
 
   var current = {
     color: 'black'
@@ -73,6 +75,7 @@
     drawLine(current.x, current.y, e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, current.color, true);
     current.x = e.clientX||e.touches[0].clientX;
     current.y = e.clientY||e.touches[0].clientY;
+    
   }
 
   function onColorUpdate(e){
@@ -103,6 +106,8 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
+  //Draw line size?
+  // Import dots ??
 
 })();
 
