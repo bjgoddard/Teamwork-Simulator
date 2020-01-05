@@ -1,11 +1,20 @@
 // Required node modules
 require('dotenv').config() // provide access to variables inside .env file
-let express = require('express')
-let flash = require('connect-flash')
-let layouts = require('express-ejs-layouts')
-let session = require('express-session')
+const express = require('express')
+const flash = require('connect-flash')
+const layouts = require('express-ejs-layouts')
+const session = require('express-session')
+const app = express()
+// const http = require('http').Server(app);
+// const io = require('socket.io')(http);
+const server = require('http').createServer(app);
+
+const io = require('socket.io').listen(server);
+
+
+
 // Declare express app variable
-let app = express()
+
 
 //Include passport configuration
 let passport = require('./config/passportConfig')
@@ -27,6 +36,24 @@ app.use((req, res, next) => {
     res.locals.user = req.user
     next()
 })
+
+
+
+
+
+
+
+//Socket.io
+function onConnection(socket){
+    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+  }
+  
+  io.on('connection', onConnection);
+
+
+
+
+
 // Add any controllers
 app.use('/auth', require('./controllers/auth'))
 app.use('/profile', require('./controllers/profile'))
@@ -34,10 +61,15 @@ app.use('/profile', require('./controllers/profile'))
 app.get('/', (req, res) => {
     res.render('home')
 })
+app.get('/simulator', (req, res) => {
+    res.render('simulator')
+})
+//404 page
 app.get('*', (req, res) => {
     res.render('error')
 })
 
-app.listen(process.env.PORT || 3002, () => {
+
+server.listen(process.env.PORT || 3002, () => {
     console.log('You are connected on port 3002')
 })
