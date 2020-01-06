@@ -5,24 +5,25 @@
 }
 html,
 body {
-  width: 100%;
+  /* width: 100%;
   height: 100%;
 
     display: flex;
-    /* min-height: 100vh; */
-    flex-direction: column;
-
+  
+    flex-direction: column; */
+width: 100%;
+height: 100%;
 }
 
 nav {
     width: 100%;
     background-color: #ddd;
 }
-
+/* 
 main {
     text-align: center;
     flex: 1 0 auto;
-}
+} */
 
 #toast-container {
     left: 40% !important;
@@ -30,20 +31,17 @@ main {
     bottom: auto !important;
   }
 
-.whiteboard {
-    /* height: 60vh;
-    width: 100vw;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0; */
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  display: block;
-  }
 
+#board-container {
+  width: 1000px;
+  height: 500px;
+  
+}
+#whiteboard {
+  position: relative;
+  background-color: grey;
+
+}
 
 .colors {
     position: fixed;
@@ -51,8 +49,8 @@ main {
   
 .color {
     display: inline-block;
-    height: 48px;
-    width: 48px;
+    height: 50px;
+    width: 50px;
   }
   
 .color.black { background-color: black; }

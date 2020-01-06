@@ -1,6 +1,6 @@
 <h3>Simulator</h3>
-
-<canvas class="whiteboard"></canvas>
+<div id="board-container">
+    <canvas id="whiteboard" width="1000" height="500"></canvas>
 </div>
 <div class="colors">
     <div class="color black"></div>
@@ -9,6 +9,10 @@
     <div class="color blue"></div>
     <div class="color yellow"></div>
 </div>
+<div>
+    <input type="button" id="clear" value="clear">
+</div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="main.js"></script>
+<!-- <script src="main.js"></script> -->
+<script src="canvas.js"></script>

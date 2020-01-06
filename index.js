@@ -11,6 +11,9 @@ const server = require('http').createServer(app);
 
 const io = require('socket.io').listen(server);
 
+//Array of previous lines drawn
+var line_history = [];
+
 
 
 // Declare express app variable
@@ -38,19 +41,33 @@ app.use((req, res, next) => {
 })
 
 
+//Socket2
+io.on('connection', function (socket) {
+
+    //Change to for loop?
+    for (var i in line_history) {
+        socket.emit('draw_line', { line: line_history[i] })
+    }
+    // add handler for message type draw_line
+    socket.on('draw_line', function (data) {
+        // add received line to history
+        line_history.push(data.line);
+        //send line to all clients
+        io.emit('draw_line', { line: data.line })
+    })
+})
 
 
 
 
-
-//Socket.io
-function onConnection(socket){
+// //Socket.io
+// function onConnection(socket){
     
-    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+//     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
     
-  }
+//   }
   
-  io.on('connection', onConnection);
+//   io.on('connection', onConnection);
 
 
 

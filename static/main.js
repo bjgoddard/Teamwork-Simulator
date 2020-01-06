@@ -7,8 +7,18 @@
   var canvas = document.getElementsByClassName('whiteboard')[0];
   var colors = document.getElementsByClassName('color');
   var context = canvas.getContext('2d');
-  context.canvas.width = window.innerWidth;
-  context.canvas.height = window.innerHeight;
+  var container = document.getElementsByClassName('draw-container');
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  // canvas.width = container.clientWidth;
+  // canvas.height = container.clientHeight;
+  // let fitToContainer = (canvas) => {
+  //   canvas.style.width = '100%';
+  //   canvas.style.height = '100%';
+  // canvas.width = container.width;
+  // canvas.height = container.height;
+  // }
+  // fitToContainer(canvas);
 
   var current = {
     color: 'black'
@@ -103,8 +113,8 @@
 
   // make the canvas fill its parent
   function onResize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
   }
   //Draw line size?
   // Import dots ??
