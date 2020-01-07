@@ -37,6 +37,15 @@ main {
   height: 500px;
   
 }
+#button-container {
+  position: fixed;
+
+}
+#clear {
+  display: fixed;
+  height: 50px;
+  width: 50px;
+}
 #whiteboard {
   position: relative;
   background-color: grey;
@@ -45,6 +54,7 @@ main {
 
 .colors {
     position: fixed;
+    margin-left: 50px
   }
   
 .color {
@@ -55,6 +65,14 @@ main {
   
 .color.black { background-color: black; }
 .color.red { background-color: red; }
-.color.green { background-color: green; }
-.color.blue { background-color: blue; }
+.color.lightgreen { background-color: lightgreen; }
+.color.cyan { background-color: cyan; }
 .color.yellow { background-color: yellow; }
+.color.springgreen { background-color: springgreen; }
+.color.hotpink { background-color: hotpink; }
+.color.sienna { background-color: sienna; }
+.color.white { background-color: white;}
+.color.darkorange { background-color: darkorange; }
+.color.darkorchid { background-color: darkorchid}
+.color.mediumblue { background-color: mediumblue;}
+.color.firebrick { background-color: firebrick;}

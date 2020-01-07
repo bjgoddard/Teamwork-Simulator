@@ -49,7 +49,7 @@ io.on('connection', function (socket) {
         socket.emit('draw_line', { line: line_history[i] })
     }
     // add handler for message type draw_line
-    socket.on('draw_line', function (data) {
+    socket.on('draw_line', (data) => {
         // add received line to history
         line_history.push(data.line);
         //send line to all clients
