@@ -1,9 +1,10 @@
 {
   "development": {
-
     "database": "teamwork_db",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "operatorsAliases": 0
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
   }
 }
