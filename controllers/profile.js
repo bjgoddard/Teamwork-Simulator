@@ -1,5 +1,4 @@
 let router = require('express').Router()
-let isAdminLoggedIn = require('../middleware/isAdminloggedIn')
 let isLoggedIn = require('../middleware/isLoggedIn')
 let db = require('../models')
 // let async = require('async')
@@ -75,9 +74,6 @@ router.put('/:id', (req, res) => {
     })
 })
 
-router.get('/admin', isAdminLoggedIn, (req, res) => {
-    res.render('profile/admin')
-})
 
 //GET /profile/:teamId/newMember -- create a new member in that team
 router.get('/:id/newMember', (req, res) => {
