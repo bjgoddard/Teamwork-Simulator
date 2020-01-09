@@ -1,4 +1,14 @@
-<h3>Simulator</h3>
+<div class="row">
+    <div id="ui-container" class="col s12">
+        <span id="member-container">
+            <% for (let i=0; i < team.members.length; i++){ %>
+                <div class="members">
+                    <%=team.roles[i].icon%><%=team.members[i].name %>
+                </div>
+            <% } %>
+        </span>
+    </div>
+</div>
 <div id="board-container">
     <canvas id="whiteboard" width="1000" height="500"></canvas>
 </div>
@@ -18,8 +28,14 @@
     <div class="color firebrick"></div>
 </div>
 <div id=button-container>
+    
     <input type="button" id="clear" value="clear">
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="canvas.js"></script>
+<script src="../../canvas.js"></script>
+
+<!-- views/profile/simulator.ejs
+views/simulator.ejs
+static/css/style.css
+static/canvas.js -->

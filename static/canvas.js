@@ -1,31 +1,20 @@
 console.log("CANVAS.JS")
 
-
-
-//TODO: Resize function?
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
     
     let canvas = document.getElementById('whiteboard')
     let context = canvas.getContext('2d')
-    // let width = window.innerWidth;
-    // let height = window.innerHeight;
     let socket = io.connect()
     let rect = canvas.getBoundingClientRect()
     
-
     //Creating color functionality
     let colors = document.getElementsByClassName('color')
+    let current = { color: 'black' };
 
-
-    let current = {
-        color: 'black'
-    };
     const onColorUpdate = (e) => {
         current.color = e.target.className.split(' ')[1]
     }
+
     for (var i = 0; i < colors.length; i++) {
         colors[i].addEventListener('click', onColorUpdate, false)
     }
@@ -63,10 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     socket.on('draw_line', data => {
         var line = data.line;
         
-        // console.log(current.color)
         context.beginPath();
-        console.log(data.line)
-        // context.strokeStyle = current.color;
         context.strokeStyle = line[2]
         context.lineWidth = 2;
         context.moveTo(line[0].x, line[0].y);
@@ -80,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             mouse.move = false;
         }
         mouse.pos_prev = { x: mouse.pos.x, y: mouse.pos.y};
-        setTimeout(mainLoop, 25);
+        setTimeout(mainLoop, 50);
     }
 
     mainLoop();

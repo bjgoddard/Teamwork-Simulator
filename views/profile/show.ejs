@@ -8,6 +8,10 @@
        <% } %>
         <%team.members.forEach(m => { %>
         <h4>
+        <form method="POST" action="/profile/<%=team.id%>?_method=DELETE">
+            <button name="memberName" value="<%=m.id%>" type="submit">X</button>
+
+        </form>
             <%=m.name%>
         </h4>
         <% }) %>
@@ -15,8 +19,15 @@
 
     </div>
     <div class="col s4">
-        <a class="btn btn-primary" href="/simulator">Create simulation</a>
+        <a class="btn btn-primary" href="/profile/<%=team.id%>/simulator">Create simulation</a>
+        <br>
+        <form method="POST" action="/profile/<%=team.id%>?_method=PUT">
+            <input name="putTeamName" type="text" placeholder="Edit team name">
+            <button name="putTeamButton" type="submit">Change Team Name</button>
+            
+        </form>
     </div>
+    
     <div class="col s4">
         <h4>Roles of <%= team.name %> :</h4>
 

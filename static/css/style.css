@@ -5,33 +5,29 @@
 }
 html,
 body {
-  /* width: 100%;
-  height: 100%;
-
-    display: flex;
-  
-    flex-direction: column; */
 width: 100%;
 height: 100%;
 }
-
+#intro {
+  font-size: 25px;
+}
+#ui-container {
+  
+  background-color: darkgreen;
+}
+#member-container {
+  font-size: 12px;
+  background-color: teal;
+}
 nav {
     width: 100%;
     background-color: #ddd;
 }
-/* 
-main {
-    text-align: center;
-    flex: 1 0 auto;
-} */
-
 #toast-container {
     left: 40% !important;
     right: auto !important;
     bottom: auto !important;
   }
-
-
 #board-container {
   width: 1000px;
   height: 500px;
