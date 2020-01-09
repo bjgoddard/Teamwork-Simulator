@@ -1,0 +1,23 @@
+
+
+<div class="row">
+    <div class="col s5">
+            <h3>Add a new role to <%=team.name%></h3>
+        <form method="POST" action="/profile/<%=team.id%>/newRole" class="col s12">
+            <input id="roleName" type="text" class="validate" placeholder="Role Name"name="roleName">
+            <input id="roleIcon" type="text" class="validate" placeholder="Role Icon" name="roleIcon">
+            <br>
+            
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col-s10">
+            <h4><%=team.name%>'s current roles:</h4>
+            <%team.roles.forEach(r => { %>
+           <p><%=r.name%> <%=r.icon%></p>
+           <% }) %>
+    
+           
+    </div>
+</div>
+    

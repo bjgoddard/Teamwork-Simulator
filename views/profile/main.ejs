@@ -1,1 +1,20 @@
-<h1><%= user.username %> 's Profile </h1>
+<h1><%= user.username %> 's Teams</h1>
+<div class="row">
+    <div class="col s6">
+        <h2>My Teams</h2>
+        <% if (teams.length < 1) { %>
+            <h4>No teams found, create a team!</h4>
+        <% } %>
+        <% teams.forEach(t => { %>
+        
+            <div class="panel small">
+                <span class="panel-title">
+                    <a href="/profile/<%=t.id%>"><%=t.name%></a>
+                </span>
+            </div>
+            <%})%>
+            <a class="btn btn-primary" href="/profile/newTeam">Create a New Team</a>
+    </div> 
+
+</div>
+    

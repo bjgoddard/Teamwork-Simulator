@@ -1,0 +1,28 @@
+<h4> Create a new member of <%=team.name%></h4>
+
+<div class="row">
+    <form method="POST" action="/profile/<%=team.id%>/newMember" class="col s12">
+        <input id="memberName" type="text" class="validate" placeholder="Member's Name" name="memberName">
+        <input type="submit" class="btn btn-primary">
+    
+        <br>
+        
+    <h4>Available roles for this team:</h4>
+    <%team.roles.forEach(r => { %>
+    <p>
+ 
+        <label>
+
+            <input class="with-gap" name="roleId" value="<%= r.id %>" type="radio" />
+
+            <span><%=r.name%> <%=r.icon%></span>
+
+        </label>
+
+    </p>
+    <% }) %>
+    </form>
+
+    
+</div>
+

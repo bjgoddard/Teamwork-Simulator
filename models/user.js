@@ -46,6 +46,9 @@ module.exports = (sequelize, DataTypes) => {
   });
   user.associate = function(models) {
     // associations can be defined here
+    models.user.belongsToMany(models.teams, {
+      through: 'managers_teams'
+    })
   };
 
   user.prototype.validPassword = function (typedInPassword) {

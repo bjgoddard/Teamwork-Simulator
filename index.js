@@ -57,22 +57,6 @@ io.on('connection', function (socket) {
     })
 })
 
-
-
-
-// //Socket.io
-// function onConnection(socket){
-    
-//     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
-    
-//   }
-  
-//   io.on('connection', onConnection);
-
-
-
-
-
 // Add any controllers
 app.use('/auth', require('./controllers/auth'))
 app.use('/profile', require('./controllers/profile'))
@@ -81,6 +65,7 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 app.get('/simulator', (req, res) => {
+    
     res.render('simulator')
 })
 //404 page

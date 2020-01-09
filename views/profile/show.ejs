@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col s4">
+        <h4>Members of <%= team.name %> :</h4>
+
+    <br>
+        <% if (team.members.length < 1) { %>
+            <h4>No members yet!</h4>
+       <% } %>
+        <%team.members.forEach(m => { %>
+        <h4>
+            <%=m.name%>
+        </h4>
+        <% }) %>
+        <a class="btn btn-primary" href="/profile/<%=team.id%>/newMember">Create a New Member</a>
+
+    </div>
+    <div class="col s4">
+        <a class="btn btn-primary" href="/simulator">Create simulation</a>
+    </div>
+    <div class="col s4">
+        <h4>Roles of <%= team.name %> :</h4>
+
+        <br>
+        <% if (team.roles.length < 1) { %>
+            <h4>No roles yet!</h4>
+       <% } %>
+        <%team.roles.forEach(r => { %>
+            <h4>
+                <%=r.name%>
+                <%=r.icon%>
+            </h4>
+            
+        <% }) %>
+        <a class="btn btn-primary" href="/profile/<%=team.id%>/newRole">Create a New Role</a>
+
+    </div>
+</div>
