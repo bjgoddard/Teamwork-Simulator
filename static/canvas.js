@@ -1,5 +1,7 @@
 console.log("CANVAS.JS")
 
+
+
 document.addEventListener("DOMContentLoaded", function() {
     
     let canvas = document.getElementById('whiteboard')
@@ -66,8 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
             mouse.move = false;
         }
         mouse.pos_prev = { x: mouse.pos.x, y: mouse.pos.y};
-        setTimeout(mainLoop, 50);
+        setTimeout(mainLoop, 40);
     }
-
     mainLoop();
     })

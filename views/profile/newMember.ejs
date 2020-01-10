@@ -10,15 +10,10 @@
     <h4>Available roles for this team:</h4>
     <%team.roles.forEach(r => { %>
     <p>
- 
         <label>
-
             <input class="with-gap" name="roleId" value="<%= r.id %>" type="radio" />
-
             <span><%=r.name%> <%=r.icon%></span>
-
         </label>
-
     </p>
     <% }) %>
     </form>

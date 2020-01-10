@@ -5,19 +5,12 @@ const flash = require('connect-flash')
 const layouts = require('express-ejs-layouts')
 const session = require('express-session')
 const app = express()
-// const http = require('http').Server(app);
-// const io = require('socket.io')(http);
 const server = require('http').createServer(app);
 
 const io = require('socket.io').listen(server);
 
 //Array of previous lines drawn
 var line_history = [];
-
-
-
-// Declare express app variable
-
 
 //Include passport configuration
 let passport = require('./config/passportConfig')
@@ -40,12 +33,9 @@ app.use((req, res, next) => {
     next()
 })
 
-
-//Socket2
+//Socket
 io.on('connection', function (socket) {
-
-    //Change to for loop?
-    for (var i in line_history) {
+    for (let i=0; i<line_history.length; i++) {
         socket.emit('draw_line', { line: line_history[i] })
     }
     // add handler for message type draw_line
@@ -64,16 +54,10 @@ app.use('/profile', require('./controllers/profile'))
 app.get('/', (req, res) => {
     res.render('home')
 })
-app.get('/simulator', (req, res) => {
-    
-    res.render('simulator')
-})
 //404 page
 app.get('*', (req, res) => {
     res.render('error')
 })
-
-
 server.listen(process.env.PORT || 3002, () => {
     console.log('You are connected on port 3002')
 })

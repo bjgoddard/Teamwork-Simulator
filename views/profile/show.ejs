@@ -1,19 +1,17 @@
 <div class="row">
     <div class="col s4">
-        <h4>Members of <%= team.name %> :</h4>
+        <h4><u>Members of <%=team.name %></u></h4>
 
     <br>
         <% if (team.members.length < 1) { %>
             <h4>No members yet!</h4>
-       <% } %>
+            <% } %>
         <%team.members.forEach(m => { %>
-        <h4>
-        <form method="POST" action="/profile/<%=team.id%>?_method=DELETE">
-            <button class="btn btn-primary" name="memberName" value="<%=m.id%>" type="submit">X</button>
-
-        </form>
-            <%=m.name%>
-        </h4>
+            
+    <form method="POST" action="/profile/<%=team.id%>?_method=DELETE">
+            <button class="btn btn-primary red darken-4" name="memberName" value="<%=m.id%>" type="submit">x</button>
+    </form> <h4><%=m.name%></h4>
+        
         <% }) %>
         <a class="btn btn-primary" href="/profile/<%=team.id%>/newMember">Create a New Member</a>
 
@@ -31,7 +29,7 @@
 
     
     <div class="col s4">
-        <h4>Roles of <%= team.name %> :</h4>
+        <h4><u>Roles of <%= team.name %></u></h4>
 
         <br>
         <% if (team.roles.length < 1) { %>

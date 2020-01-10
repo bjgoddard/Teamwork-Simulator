@@ -11,19 +11,15 @@ let passport = require('../config/passportConfig')
 router.get('/login', (req, res) => {
     res.render('auth/login')
 })
-
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/profile',
     successFlash: 'Yay, we logged in!',
     failureRedirect: '/auth/login',
     failureFlash: 'Invalid Credentials'
 }))
-
-
 router.get('/signup', (req, res) => {
     res.render('auth/signup', {data: {} })
 })
-
 router.post('/signup', (req, res, next) => {
     if (req.body.password !== req.body.password_verify) {
         //User's password verification doesn't match - probably a typo 

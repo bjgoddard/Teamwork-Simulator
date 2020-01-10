@@ -1,13 +1,11 @@
 let router = require('express').Router()
 let isLoggedIn = require('../middleware/isLoggedIn')
 let db = require('../models')
-// let async = require('async')
 let methodOverride = require('method-override')
 
 router.use(methodOverride('_method'))
 
 router.get('/', isLoggedIn, (req, res) => {
-    //Need to list teams
     db.user.findOne({
         where: {id: req.user.id}, 
         include: [db.teams]
@@ -16,19 +14,13 @@ router.get('/', isLoggedIn, (req, res) => {
     res.render('profile/main', { teams: user.teams})
     })
 })
-// //PUT /profile
-// router.put('/', isLoggedIn, (req, res) => {
-//     db
-// })
-
-
 //Get /profile/newTeam - display form for creating a new team
-router.get('/newTeam', (req, res) => {
+router.get('/newTeam',isLoggedIn, (req, res) => {
     res.render('profile/newTeam')
 })
 
 //POST /profile/newTeam - create a new team
-router.post('/newTeam', (req, res) => {
+router.post('/newTeam', isLoggedIn, (req, res) => {
     db.user.findOne({
         where: { id: req.user.id }
     })
@@ -42,7 +34,7 @@ router.post('/newTeam', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', isLoggedIn, (req, res) => {
     
     db.teams.findOne({
         where: {id: req.params.id},
@@ -58,7 +50,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', isLoggedIn, (req, res) => {
     db.teams.findOne({
         where: {id: req.params.id}
     })
@@ -73,10 +65,8 @@ router.put('/:id', (req, res) => {
     
     })
 })
-
-
 //GET /profile/:teamId/newMember -- create a new member in that team
-router.get('/:id/newMember', (req, res) => {
+router.get('/:id/newMember', isLoggedIn, (req, res) => {
     db.teams.findOne({
         where: {id: req.params.id},
         include: [db.roles]
@@ -91,7 +81,7 @@ router.get('/:id/newMember', (req, res) => {
     })
 })
 // POST /profile/:teamId/newMember -- awjdkawjdwja
-router.post('/:id/newMember', (req, res) => {
+router.post('/:id/newMember', isLoggedIn, (req, res) => {
     db.members.create({
         name: req.body.memberName,
         roleId: req.body.roleId,
@@ -105,7 +95,7 @@ router.post('/:id/newMember', (req, res) => {
     })
 })
 //Get /profile/:teamId/newRole -- create a new role in that team
-router.get('/:id/newRole', (req, res) => {
+router.get('/:id/newRole', isLoggedIn, (req, res) => {
     db.teams.findOne({
         where: {id: req.params.id},
         include: [db.roles]
@@ -119,7 +109,7 @@ router.get('/:id/newRole', (req, res) => {
 })
 
 //POST /profile/:teamId/newRole -- Add a new role to your team
-router.post('/:id/newRole', (req, res) => {
+router.post('/:id/newRole', isLoggedIn, (req, res) => {
     db.roles.create({
         name: req.body.roleName,
         icon: req.body.roleIcon,
@@ -134,7 +124,6 @@ router.post('/:id/newRole', (req, res) => {
 })
 
 router.get('/:id/simulator', (req, res) => {
-    
     db.teams.findOne({
         where: {id: req.params.id},
         include: [db.members, db.roles]
@@ -149,13 +138,12 @@ router.get('/:id/simulator', (req, res) => {
     })
 })
 //Delete a member from the team
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isLoggedIn, (req, res) => {
     db.teams.findOne({
         where: { id : req.params.id },
         include: [db.members]
     })
-    .then((team) => {
-        
+    .then(() => {
         db.members.destroy({ 
             where: { id: req.body.memberName }  
         })
@@ -164,6 +152,5 @@ router.delete('/:id', (req, res) => {
             res.redirect(`/profile/${req.params.id}`)
         })
     })
-
 
 module.exports = router
