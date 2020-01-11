@@ -11,6 +11,7 @@ const io = require('socket.io').listen(server);
 
 //Array of previous lines drawn
 var line_history = [];
+let icon_history = [];
 
 //Include passport configuration
 let passport = require('./config/passportConfig')
@@ -38,12 +39,22 @@ io.on('connection', function (socket) {
     for (let i=0; i<line_history.length; i++) {
         socket.emit('draw_line', { line: line_history[i] })
     }
-    // add handler for message type draw_line
+    for (let i=0; i<icon_history.length; i++) {
+        socket.emit('member_icon', { icon: icon_history[i]})
+        console.log(icon_history[i])
+    }
+   
     socket.on('draw_line', (data) => {
         // add received line to history
         line_history.push(data.line);
         //send line to all clients
         io.emit('draw_line', { line: data.line })
+    })
+
+    socket.on('member_icon', (data) => {
+        icon_history.push(data.icon);
+    
+        io.emit('member_icon', { icon: data.icon })
     })
 })
 

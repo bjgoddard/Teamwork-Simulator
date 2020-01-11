@@ -8,6 +8,17 @@ document.addEventListener("DOMContentLoaded", function() {
     let context = canvas.getContext('2d')
     let socket = io.connect()
     let rect = canvas.getBoundingClientRect()
+    let currentMember = ""
+    let selectedMemberList = document.getElementById("memberList")
+    let selectedMemberIcon = ""
+    //Put icon onto screen at mouse ?
+    var elem = document.querySelectorAll('select');
+    var instance = M.FormSelect.init(elem);
+
+    const selectedMemberChanged = () => {
+        selectedMemberIcon = document.getElementById("memberList").value;
+    }
+    selectedMemberList.addEventListener("change", selectedMemberChanged, false)
     
     //Creating color functionality
     let colors = document.getElementsByClassName('color')
@@ -61,6 +72,22 @@ document.addEventListener("DOMContentLoaded", function() {
         context.lineTo(line[1].x, line[1].y);
         context.stroke();
     })
+
+    socket.on('member_icon', data => {
+        var icon = data.icon;
+        console.log(icon)
+        context.font = '30px serif'
+        context.strokeText(icon[1], icon[0].x, icon[0].y)
+
+    })
+    var iconLoop = () => {
+        if (mouse.click && selectedMemberIcon) {
+            socket.emit('member_icon', { icon: [ mouse.pos, selectedMemberIcon ] })
+            selectedMemberIcon = ""
+        }
+        setTimeout(iconLoop, 100)
+    }
+    iconLoop();
     
     var mainLoop = () => {
         if (mouse.click && mouse.move && mouse.pos_prev) {
