@@ -7,6 +7,10 @@ Register your username, create roles your team members operate as
 (Linebackers, Warriors, Special Teams), and create team members with
 those roles. Next create a simulation, and share the URL.
 
+<p align="center">
+<img src="./images/p2ss2.png" alt="Picture" width="500" height="400" />
+</p>
+
 # Getting Started
 Register your username, create roles your team members operate as
 (Linebackers, Warriors, Special Teams), and create team members with
