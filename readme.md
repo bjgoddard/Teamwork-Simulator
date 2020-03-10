@@ -1,4 +1,4 @@
-# Instructions
+# Description
 This is a collaborative whiteboarding tool
 that encourages specification by importing your personal
 team roster, categorizing them by their roles, and positioning them
@@ -40,8 +40,8 @@ As of January 8th, 2020 the socket is emitting the drawing to other users presen
 
 As of January 9th, 2020 the routes to all pages are working, with models correctly populating and being queried.
 
-If I had more time I would...
-Make the role icons for team members be placeable onto the canvas.
+Future Goals
+I would like to add more features to the drawing capabilities, including sizing and an image pasting tool.
 
 
 
