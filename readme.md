@@ -11,6 +11,9 @@ those roles. Next create a simulation, and share the URL.
 <img src="./images/p2ss2.png" alt="Picture" width="500" height="400" />
 </p>
 
+# Approach
+Ever felt that drawing your solution to a problem would be more effective than just explaining in words? I have, many times. The goal with Teamwork Simulator is to provide an interface to bring planning to life as an iterative drawing process, with the ability to bring your team along through your thinking process, presenting opportunities for feedback and revision along the way.
+
 # Getting Started
 Register your username, create roles your team members operate as
 (Linebackers, Warriors, Special Teams), and create team members with
@@ -40,12 +43,10 @@ As of January 8th, 2020 the socket is emitting the drawing to other users presen
 
 As of January 9th, 2020 the routes to all pages are working, with models correctly populating and being queried.
 
-Future Goals
+# Further Goals
 I would like to add more features to the drawing capabilities, including sizing and an image pasting tool.
 
 
 
 # Authors
 Ben Goddard
-
-# Acknowledgments
