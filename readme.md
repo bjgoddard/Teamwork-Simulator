@@ -1,4 +1,4 @@
-# Instructions
+# Description
 This is a collaborative whiteboarding tool
 that encourages specification by importing your personal
 team roster, categorizing them by their roles, and positioning them
